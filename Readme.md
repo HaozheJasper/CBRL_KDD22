@@ -2,7 +2,7 @@
 ## Brief 
 The official PyTorch implementation of the SIGKDD '22 paper: ROI-Constrained Bidding via Curriculum-Guided Bayesian Reinforcement Learning (CBRL). 
 
-PDF available at [ResearchGate](https://www.researchgate.net/publication/361222484_ROI_Constrained_Bidding_via_Curriculum-Guided_Bayesian_Reinforcement_Learning), [Arxiv]().
+PDF available at [ResearchGate](https://www.researchgate.net/publication/361222484_ROI_Constrained_Bidding_via_Curriculum-Guided_Bayesian_Reinforcement_Learning), [Arxiv](https://arxiv.org/abs/2206.05240).
 
 ## Installation
 
@@ -17,7 +17,7 @@ Special dependencies on:
 ## Usage
 Due to privacy regulations, the commercial data is currently not available. 
 
-If time permits, I may update the synthetic dataset built on the commercial data. 
+If time permits, I may update the synthetic dataset built on top of the commercial data. 
 
 The repo now includes:
 - CBRL-crude: as proposed in the paper (with its variants).
@@ -40,13 +40,13 @@ bash scripts/Ind_ICM.sh ...
 
 For prior arts please refer to their official repo. 
 
-# Cite
+## Cite
 Haozhe Wang, Chao Du, Panyan Fang, Shuo Yuan, Xuming He, Liang
 Wang, Bo Zheng. 2022. ROI Constrained Bidding via Curriculum-Guided
 Bayesian Reinforcement Learning. In Proceedings of the 28th ACM SIGKDD
 Conference on Knowledge Discovery and Data Mining (KDD ’22), August
-14–18, 2022, Washington, DC, USA. ACM, New York, NY, USA, 13 pages.
+14–18, 2022, Washington, DC, USA. ACM, New York, NY, USA, 11 pages.
 https://doi.org/10.1145/3534678.3539211
 
-# Misc
+## Misc
 Contact: jasper.whz@outlook.com, [Linkedin](https://www.linkedin.com/in/haozhe-wang-10877586/).
