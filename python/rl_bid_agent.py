@@ -1,22 +1,19 @@
 import sys,os
 import gym
 sys.path.append(os.getcwd()+'/src')
-import auction_simulator
+
 from auction_simulator import Observation
 from collections.abc import Sequence
 
 from dqn import DQN
 from sac import SAC, DDPG
-from mcsac import MCSAC, MCTD3, MCDDPG
+
 import numpy as np
 import pandas as pd
 import time
 from torch.utils.tensorboard import SummaryWriter
-import torch
-from torch.optim import lr_scheduler
 import logging
-from censoredlearning import HistModel
-from runner_utils import make_parser, report, main, get_logger, train_or_test, train_or_test_synchronous_exp, Checkpointer, interfaces
+from runner_utils import make_parser, report, main, get_logger, train_or_test_synchronous_exp, Checkpointer, interfaces
 import pickle as pkl
 import random
 
@@ -386,33 +383,42 @@ class AgentWrapper(BidAgent):
         return base_len # temp
 
 def train_before_test(is_sync, test_env, train_env, agent, model, test_day_unit, train_max_days, exploration_num, writer, logger, C, window_size, nepoch=1, gamma_nepoch=5, restore=False, do_random=True, init_b=0.2, save_margin=0.1):
-    epoch_procedure = train_or_test_synchronous_exp if is_sync else train_or_test
+    epoch_procedure = train_or_test_synchronous_exp
     agent.set_train()
     max_perf = -np.inf
     if train_env is not None:
-        epochs = [5, 10]
-        base_cnt = 0
-        for git in range(gamma_nepoch):
-            pb = init_b + 0.1 * git  # 0.8 enough
-            train_env.set_b(pb)
+        if train_env.reward_type==6:
+            epochs = [5, 10]
+            base_cnt = 0
+            for git in range(gamma_nepoch):
+                pb = init_b + 0.1 * git  # 0.8 enough
+                train_env.set_b(pb)
 
-            if gamma_nepoch == 1:
-                niter_each_epoch = nepoch
-            elif gamma_nepoch == 2:
-                niter_each_epoch = 5 if git == 0 else 10
-            # niter_each_epoch = nepoch if gamma_nepoch==1 else epochs[git]
-            for it in range(niter_each_epoch):
+                if gamma_nepoch == 1:
+                    niter_each_epoch = nepoch
+                elif gamma_nepoch == 2:
+                    niter_each_epoch = 5 if git == 0 else 10
+                # niter_each_epoch = nepoch if gamma_nepoch==1 else epochs[git]
+                for it in range(niter_each_epoch):
+                    if do_random: train_env.randomize_days()
+                    max_perf = epoch_procedure(train_env, agent, logger, writer, window_size, exploration_num, C,
+                                               istest=False, epoch_it=it + base_cnt, git=git, max_perf=max_perf,
+                                               save_margin=save_margin)
+                    train_env.set_step(0)
+
+                agent.clear_buffer()
+                base_cnt += niter_each_epoch
+                # agent.load(0)
+            train_env.save_mprice_model()
+            test_env.set_b(pb)  # need to set gamma for test env, otherwise error occur
+        else:
+            for it in range(nepoch):
+                print('epoch {}'.format(it))
                 if do_random: train_env.randomize_days()
-                max_perf = epoch_procedure(train_env, agent, logger, writer, window_size, exploration_num, C,
-                                           istest=False, epoch_it=it + base_cnt, git=git, max_perf=max_perf,
-                                           save_margin=save_margin)
+                max_perf = epoch_procedure(train_env, agent, window_size, exploration_num, C, istest=False, epoch_it=it,
+                                           max_perf=max_perf, save_margin=save_margin)
                 train_env.set_step(0)
-
-            agent.clear_buffer()
-            base_cnt += niter_each_epoch
-            # agent.load(0)
-        train_env.save_mprice_model()
-        test_env.set_b(pb)  # need to set gamma for test env, otherwise error occur
+            train_env.save_mprice_model()
 
     agent.eval()
     if not restore:
