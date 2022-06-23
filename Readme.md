@@ -42,11 +42,23 @@ For prior arts please refer to their official repo.
 
 ## Cite
 Haozhe Wang, Chao Du, Panyan Fang, Shuo Yuan, Xuming He, Liang
-Wang, Bo Zheng. 2022. ROI Constrained Bidding via Curriculum-Guided
+Wang, Bo Zheng. 2022. ROI-Constrained Bidding via Curriculum-Guided
 Bayesian Reinforcement Learning. In Proceedings of the 28th ACM SIGKDD
 Conference on Knowledge Discovery and Data Mining (KDD ’22), August
 14–18, 2022, Washington, DC, USA. ACM, New York, NY, USA, 11 pages.
 https://doi.org/10.1145/3534678.3539211
+
+```latex
+@InProceedings{wang2022cbrl,
+  title = {ROI-Constrained Bidding via Curriculum-Guided
+Bayesian Reinforcement Learning},
+  author = {Wang, Haozhe and Du, Chao and Fang, Panyan and Yuan, Shuo and He, Xuming and Wang, Liang and Zheng, Bo},
+  booktitle = {Proceedings of the 28th ACM SIGKDD
+Conference on Knowledge Discovery and Data Mining (KDD ’22)},
+  year = {2022},
+  doi = {10.1145/3534678.3539211}
+}
+```
 
 ## Misc
 Contact: jasper.whz@outlook.com, [Linkedin](https://www.linkedin.com/in/haozhe-wang-10877586/).
