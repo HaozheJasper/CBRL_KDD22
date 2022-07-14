@@ -336,6 +336,7 @@ class NaiveBuffer():
                 for idx,num in enumerate(num_history):
                     if num==0: continue
                     init[idx, :num * self.sar_size] = concat[cnt:cnt+num].reshape(-1)
+                    cnt += num
                 # for idx,num in enumerate(num_history):
                 #     if num==0: continue
                 #     epid = epids[idx]
