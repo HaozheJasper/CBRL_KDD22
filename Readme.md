@@ -2,7 +2,7 @@
 ## Brief 
 The official PyTorch implementation of the SIGKDD '22 paper: ROI-Constrained Bidding via Curriculum-Guided Bayesian Reinforcement Learning (CBRL). 
 
-PDF available at [ResearchGate](https://www.researchgate.net/publication/361222484_ROI_Constrained_Bidding_via_Curriculum-Guided_Bayesian_Reinforcement_Learning), [Arxiv](https://arxiv.org/abs/2206.05240).
+PDF available at [ACM DL](https://dl.acm.org/doi/abs/10.1145/3534678.3539211) [ResearchGate](https://www.researchgate.net/publication/361222484_ROI_Constrained_Bidding_via_Curriculum-Guided_Bayesian_Reinforcement_Learning), [Arxiv](https://arxiv.org/abs/2206.05240).
 
 ## Installation
 
