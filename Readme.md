@@ -40,6 +40,11 @@ bash scripts/Ind_ICM.sh ...
 
 For prior arts please refer to their official repo. 
 
+## Running Experiments on Synthetic Environments
+There have been inquiries about the synthetic environments. 
+
+Here I provide an example code base (check out `syn_cbrl.zip`) which includes a runnable synthetic environment.
+
 ## Cite
 Haozhe Wang, Chao Du, Panyan Fang, Shuo Yuan, Xuming He, Liang
 Wang, Bo Zheng. 2022. ROI-Constrained Bidding via Curriculum-Guided
