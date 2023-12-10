@@ -43,7 +43,9 @@ For prior arts please refer to their official repo.
 ## Running Experiments on Synthetic Environments
 There have been inquiries about the synthetic environments. 
 
-Here I provide an example code base (check out `syn_cbrl.zip`) which includes a runnable synthetic environment.
+So basically you are free to create your own synthetic environment. 
+Here I provide an example code base (check out `syn_cbrl.zip`) which includes a runnable synthetic environment, 
+showcasing protocols of environment construction. 
 
 ## Cite
 Haozhe Wang, Chao Du, Panyan Fang, Shuo Yuan, Xuming He, Liang
